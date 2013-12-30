@@ -304,9 +304,8 @@ public class TryAgainTetris extends JPanel implements ActionListener, KeyListene
             hkPoster.setBounds(0, 0, 365, 700);
             this.add(hkPoster);
             
-            addNewScore(name, numberLines);
+            if(numberLines > 0) addNewScore(name, numberLines);
             
-            System.out.println("hihihihi");
             try{
                 File xmlFile = new File("scores.xml");
                 DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -328,7 +327,7 @@ public class TryAgainTetris extends JPanel implements ActionListener, KeyListene
                         Element e = (Element)currentNode;
 
                         g2.drawString(e.getElementsByTagName("username").item(0).getTextContent(), 395, yscores+(i*20));
-                        g2.drawString(e.getElementsByTagName("lines").item(0).getTextContent(), 495, yscores+(i*20));
+                        g2.drawString(e.getElementsByTagName("lines").item(0).getTextContent(), 525, yscores+(i*20));
                         
                         System.out.println(e.getElementsByTagName("username").item(0).getTextContent() + 
                                 "     " + e.getElementsByTagName("lines").item(0).getTextContent());
@@ -352,13 +351,7 @@ public class TryAgainTetris extends JPanel implements ActionListener, KeyListene
  
 		// Get the root element
 		Node company = doc.getFirstChild();
- 
-		// Get the staff element , it may not working if tag has spaces, or
-		// whatever weird characters in front...it's better to use
-		// getElementsByTagName() to get it directly.
-		// Node staff = company.getFirstChild();
- 
-		// Get the staff element by tag name directly
+
 		Node staff = doc.getElementsByTagName("person").item(0);
 
                 Node persons = doc.getFirstChild();
