@@ -502,7 +502,7 @@ public class TryAgainTetris extends JPanel implements ActionListener, KeyListene
             TBlock.gameOver();
             ZBlock.gameOver();
              
-            name = JOptionPane.showInputDialog("Enter Thy Name");
+            if(numberLines > 0) name = JOptionPane.showInputDialog("Enter Thy Name");
         }
         
         repaint();
